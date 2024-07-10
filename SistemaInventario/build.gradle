@@ -1,0 +1,36 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'mysql:mysql-connector-java:8.0.29'
+    implementation 'org.openjfx:javafx-controls:22.0.1'
+    implementation 'org.openjfx:javafx-fxml:22.0.1'
+}
+
+application {
+    mainClass = 'sistema.Main'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += '--module-path'
+    options.compilerArgs += 'C:\\Program Files\\JavaFx\\javafx-sdk-22.0.1\\lib'
+    options.compilerArgs += '--add-modules'
+    options.compilerArgs += 'javafx.controls,javafx.fxml'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
